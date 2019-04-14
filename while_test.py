@@ -8,8 +8,5 @@ while True:
         continue
     if i > stop:
         break
-
-
     print(i, end=' ')
     i += 1
-
