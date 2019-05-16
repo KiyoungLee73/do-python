@@ -6,8 +6,47 @@ def measureSimpleComparison(inputData):
     similarity = 0
     ######################여기부터 구현 (1) ---------------->
     
-    
+    #문자열 통합 길이 구하기
+    str1, str2 = map(str, inputData.split(','))
+    str1_len = len(str1)
+    str2_len = len(str2)
+    total_len = str1_len + (str2_len - 1)*2
+    loop_len = str1_len + str2_len - 1
 
+    fixedStr1 = str1.center(total_len, '0')
+    fixedStr2 = str2.ljust(total_len).replace(' ', '0')
+    #print(fixedStr1, fixedStr2)
+
+    compareStr1 = list(fixedStr1)
+    compareStr2 = list('0' for i in range(total_len))
+
+    #print(compareStr1, compareStr2)
+    checkList = list()
+
+    import copy
+    temp_ls = list()
+    for i in range(loop_len):
+        count = 0
+        pos = 0
+        for j in fixedStr2:
+            pos = (count+i)%total_len
+            compareStr2[pos] = j
+            count += 1
+        temp_ls = copy.deepcopy(compareStr2)
+        checkList.append(temp_ls)
+
+    #유사도 판단
+    maxResemble = 0
+    for i in checkList:
+        tempResemble = 0
+        for j in range(len(i)):
+            if i[j] == compareStr1[j] and  compareStr1[j] != '0' and i[j] != '0':
+                tempResemble += 1
+        
+        if tempResemble > maxResemble:
+            maxResemble = tempResemble
+
+    similarity = maxResemble
 
     ############################# <-------------- 여기까지 구현 (1)
     return similarity
@@ -20,9 +59,51 @@ def measureSimpleComparison(inputData):
 def measureSortComparison(inputData, similarityMatrix):
     maxSimilarity = 0
     ######################여기부터 구현 (2) ---------------->
-    
-    
+    #문자열 통합 길이 구하기
+    str1, str2 = map(str, inputData.split(','))
+    str1_len = len(str1)
+    str2_len = len(str2)
+    total_len = str1_len + (str2_len - 1)*2
+    loop_len = str1_len + str2_len - 1
 
+    fixedStr1 = str1.center(total_len, '0')
+    fixedStr2 = str2.ljust(total_len).replace(' ', '0')
+    #print(fixedStr1, fixedStr2)
+
+    compareStr1 = list(fixedStr1)
+    compareStr2 = list('0' for i in range(total_len))
+
+    #print(compareStr1, compareStr2)
+    checkList = list()
+
+    import copy
+    temp_ls = list()
+    for i in range(loop_len):
+        count = 0
+        pos = 0
+        for j in fixedStr2:
+            pos = (count+i)%total_len
+            compareStr2[pos] = j
+            count += 1
+        temp_ls = copy.deepcopy(compareStr2)
+        checkList.append(temp_ls)
+
+    #유사도 판단
+    maxResemble = 0
+
+    compare = {'A':0, 'C':1, 'G':2, 'T':3, '0':4}
+
+    for i in checkList:
+        tempResemble = 0
+        for j in range(len(i)):
+            i[j] == compareStr1[j]  # A = C
+            tempResemble += similarityMatrix[compare.get(i[j])][compare.get(compareStr1[j])]
+        #print(tempResemble)
+
+        if tempResemble > maxResemble:
+            maxResemble = tempResemble    
+    
+    maxSimilarity = maxResemble
     
     ############################# <-------------- 여기까지 구현 (2)
     return maxSimilarity

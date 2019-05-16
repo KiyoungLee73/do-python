@@ -5,8 +5,33 @@
 def getStrList(inputData):
     strList = []
     ######################여기부터 구현 (1) ---------------->
+    #print(inputData)
+    tempStrList = ''
+    tempNumList = ''
+
+    for i in inputData:
+         
+        if i.isdigit():
+            tempNumList += i
+        else:
+            tempStrList += i
 
 
+    # str1 = ''
+    # str2 = ''
+
+    # for i in tempStrList:
+    #     str1 += i
+
+    # for i in tempNumList:
+    #     str1 += i
+
+    # print(type(str1))
+    # print(type('AAA'))
+
+
+    strList.append(tempStrList)
+    strList.append(tempNumList)
 
 
     ############################# <-------------- 여기까지 구현 (1)
@@ -19,9 +44,13 @@ def getStrList(inputData):
 def getNewStr(strList):
     newStr = ""
     ######################여기부터 구현 (2) ---------------->
+    #print(strList)
 
-
-
+    for i in range(len(strList[1])):
+        newStr += strList[0][i]
+        newStr += strList[1][i]
+    
+    newStr += strList[0][len(strList[0])-1]
 
     ############################# <-------------- 여기까지 구현 (2)
     return newStr

@@ -2,7 +2,7 @@
 # 이 파일은 수정하면 안되며, 제공된 Operation.py 파일의
 # 함수를 수정해서 프로그램을 완성해야 합니다.
 #-----------------------------------------------
-from operation.Operation import *
+from Operation import *
 
 def main():
     # 제공 데이터 세트2를 실행하려면 loadData에서 제공 데이터 세트1을 주석 처리하고제공 데이터 세트2를 주석 해제하여 실행

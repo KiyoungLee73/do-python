@@ -6,8 +6,18 @@ def getSequenceList(inputData) :
     sequenceList = []
     ########################여기부터 구현 (1) ---------------->
 
+    #print(inputData)
+    sampleStr = '123456789'
+    returnList = list()
 
+    for i in inputData:
+        if sampleStr.find(i) >= 0:
+            returnList.append(i)
 
+    #print(returnList)
+
+    sequenceList = returnList
+    
 
     ############################# <-------------- 여기까지 구현 (1)
     return sequenceList
@@ -21,7 +31,30 @@ def getMaxNum(sequenceList) :
     ########################여기부터 구현 (2) ---------------->
 
 
+    #print(sequenceList)
 
+    maxVal = 0
+    minVal = 999999999
+
+    for i in sequenceList:
+        chkVal = int(i)
+        if chkVal > maxVal:
+            maxVal = chkVal
+        
+        if chkVal < minVal:
+            minVal = chkVal
+
+    #print(maxVal)
+    #print(minVal)
+
+    maxValStr = str(maxVal)
+    minValStr = str(minVal)
+
+
+    if int(maxValStr + minValStr) > int(minValStr + maxValStr):
+        maxNum =  int(maxValStr + minValStr)
+    else:
+        maxNum =  int(minValStr + maxValStr)
 
     ############################# <-------------- 여기까지 구현 (2)
     return maxNum

@@ -21,13 +21,13 @@ def loadData():
     ######################
     # 제공 데이터 세트 1
     ######################
-    inputData = "A37D2CB5E8F"
+    # inputData = "A37D2CB5E8F"
 
     ######################
     # 제공 데이터 세트 2
     ######################
 
-    # inputData = "F7T123GCZ5Q"
+    inputData = "F7T123GCZ5Q"
 
     return inputData
 
