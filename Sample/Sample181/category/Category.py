@@ -7,9 +7,38 @@ def getTopCategory(inputData, categories):
     topCategory = ""
     ########################여기부터 구현 (1) ---------------->
 
+    foundedHighCategoryList = list()
+    foundedHighCategory = ''
+    for i in categories:
+        inputCategory = i
+        tempHighCategory = ''
+        while True:
+            foundedFlag = 'N'
+            for searchHiarachy in inputData:
+                if searchHiarachy[1] == inputCategory:
+                    foundedHighCategory = searchHiarachy[0]
+                    inputCategory = foundedHighCategory
+                    tempHighCategory = tempHighCategory + foundedHighCategory
+                    foundedFlag = 'Y'
+                
+                if foundedFlag == 'Y':
+                    break
+            if foundedFlag == 'N':
+                break
+        foundedHighCategoryList.append(tempHighCategory)
+    #print(foundedHighCategoryList)
 
+    minLen = 9999
+    inputSize = len(foundedHighCategoryList)
+    for j in range(len(foundedHighCategoryList)):
+        foundedHighCategoryList[j] = foundedHighCategoryList[j][::-1] #순서 뒤집기 중요
+        if len(foundedHighCategoryList[j]) < minLen:
+            minLen = len(foundedHighCategoryList[j])
+    #print(foundedHighCategoryList)
 
-
+    for k in range(minLen):
+        if foundedHighCategoryList[0][k] == foundedHighCategoryList[1][k]:
+            topCategory = foundedHighCategoryList[0][k]
 
     ############################# <-------------- 여기까지 구현 (1)
     return topCategory
@@ -23,7 +52,43 @@ def getNumberOfSubcategories(inputData, categoryStr) :
     numberOfSubcategories = 0
     ########################여기부터 구현 (2) ---------------->
 
+    #상위카테고리 찾기
+    highCategory = ''
+    for a in inputData:
+        if categoryStr == a[1]:
+            highCategory = a[0]
 
+    foundedCategory = list()
+    count = 0
+    findCategory = [['1', highCategory]]
+    tempFindCategory = list()
+    targetCategory = inputData
+
+    import copy
+
+    while True:
+        foundedFlag = 'N'
+        jCount = 0
+        for j in findCategory:
+            foundedFlag = 'N'
+            for i in targetCategory:
+                if j[1] == i[0]:
+                    foundedCategory.append(i)
+                    tempFindCategory.append(i)
+                    count += 1
+                    foundedFlag = 'Y'
+            jCount += 1
+        if len(tempFindCategory) > 0:
+            findCategory.clear()
+            findCategory = copy.deepcopy(tempFindCategory)
+            tempFindCategory.clear()
+
+        #print(findCategory)
+
+        if foundedFlag == 'N':
+            break
+    #print(foundedCategory)  
+    numberOfSubcategories = len(foundedCategory)
 
     ############################# <-------------- 여기까지 구현 (2)
     return numberOfSubcategories

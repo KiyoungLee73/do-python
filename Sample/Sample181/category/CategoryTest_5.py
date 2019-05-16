@@ -1,5 +1,5 @@
 import unittest
-from category.Category import *
+from Category import *
 
 class CategoryTest_5(unittest.TestCase):
     inputData =[
