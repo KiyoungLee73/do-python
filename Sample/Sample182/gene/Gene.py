@@ -5,7 +5,6 @@
 def measureSimpleComparison(inputData):
     similarity = 0
     ######################여기부터 구현 (1) ---------------->
-    
     #문자열 통합 길이 구하기
     str1, str2 = map(str, inputData.split(','))
     str1_len = len(str1)
@@ -15,12 +14,10 @@ def measureSimpleComparison(inputData):
 
     fixedStr1 = str1.center(total_len, '0')
     fixedStr2 = str2.ljust(total_len).replace(' ', '0')
-    #print(fixedStr1, fixedStr2)
 
     compareStr1 = list(fixedStr1)
     compareStr2 = list('0' for i in range(total_len))
 
-    #print(compareStr1, compareStr2)
     checkList = list()
 
     import copy
@@ -47,7 +44,6 @@ def measureSimpleComparison(inputData):
             maxResemble = tempResemble
 
     similarity = maxResemble
-
     ############################# <-------------- 여기까지 구현 (1)
     return similarity
 
@@ -68,12 +64,10 @@ def measureSortComparison(inputData, similarityMatrix):
 
     fixedStr1 = str1.center(total_len, '0')
     fixedStr2 = str2.ljust(total_len).replace(' ', '0')
-    #print(fixedStr1, fixedStr2)
 
     compareStr1 = list(fixedStr1)
     compareStr2 = list('0' for i in range(total_len))
 
-    #print(compareStr1, compareStr2)
     checkList = list()
 
     import copy
@@ -98,13 +92,10 @@ def measureSortComparison(inputData, similarityMatrix):
         for j in range(len(i)):
             i[j] == compareStr1[j]  # A = C
             tempResemble += similarityMatrix[compare.get(i[j])][compare.get(compareStr1[j])]
-        #print(tempResemble)
-
         if tempResemble > maxResemble:
             maxResemble = tempResemble    
     
     maxSimilarity = maxResemble
-    
     ############################# <-------------- 여기까지 구현 (2)
     return maxSimilarity
 

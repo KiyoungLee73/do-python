@@ -13,10 +13,8 @@ def getNumberOfSubArrays(arraySize):
 
     for k in range(1, arraySize + 1, 1):
         sub_array_size = k
-        #print('sub_array_size : ' + str(sub_array_size))
         for start_i in range(1, arraySize + 2 - sub_array_size, 1):
             for start_j in range(1, arraySize + 2 - sub_array_size, 1):
-                #print('start i, j : ' + str(start_i) + ', ' + str(start_j))
                 end_i = start_i + sub_array_size - 1
                 end_j = start_j + sub_array_size - 1
                 
@@ -25,7 +23,6 @@ def getNumberOfSubArrays(arraySize):
                 ls_sub_array.append([start_pos, end_pos])
 
                 count += 1
-    #print(count)
     numberOfSubArrays = count
 
     ############################# <-------------- 여기까지 구현 (1)
@@ -48,10 +45,8 @@ def getMaximumValue(inputData):
 
     for k in range(1, arraySize + 1, 1):
         sub_array_size = k
-        #print('sub_array_size : ' + str(sub_array_size))
         for start_i in range(1, arraySize + 2 - sub_array_size, 1):
             for start_j in range(1, arraySize + 2 - sub_array_size, 1):
-                #print('start i, j : ' + str(start_i) + ', ' + str(start_j))
                 end_i = start_i + sub_array_size - 1
                 end_j = start_j + sub_array_size - 1
                 
@@ -68,8 +63,6 @@ def getMaximumValue(inputData):
         start_idx_str, end_idx_str = start_end[0], start_end[1]
         start_idx = start_idx_str.split(',')
         end_idx = end_idx_str.split(',')
-        #print(start_idx)
-        #print(end_idx)
 
         # Max 계산
         temp_sum = 0
@@ -82,7 +75,6 @@ def getMaximumValue(inputData):
         
         temp_sum = 0
 
-        #print(max_val)
         maximumValue = max_val
     ############################# <-------------- 여기까지 구현 (2)
     return maximumValue
