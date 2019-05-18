@@ -12,6 +12,7 @@ def measureSimpleComparison(inputData):
     total_len = str1_len + (str2_len - 1)*2
     loop_len = str1_len + str2_len - 1
 
+
     fixedStr1 = str1.center(total_len, '0')
     fixedStr2 = str2.ljust(total_len).replace(' ', '0')
 
